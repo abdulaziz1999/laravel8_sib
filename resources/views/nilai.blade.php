@@ -1,7 +1,7 @@
 @php
-$nama = "Ahmad Maulani";
+$nama = "Abdul Aziz";
 $matpel = "Matematika";
-$nilai = 59.99999;
+$nilai = 100;
 @endphp
 Nama: {{ $nama }}
 <br />Mata Pelajaran: {{ $matpel }}
