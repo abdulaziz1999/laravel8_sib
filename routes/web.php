@@ -13,9 +13,44 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
 Route::get('/', function () {
-    return view('welcome');
+    //return view('welcome');
+    return view('layouts.home');
 });
+
+Route::get('/home', function () {
+    return view('layouts.home');
+});
+
+Route::get('/about', function () {
+    return view('layouts.about');
+});
+
+Route::get('/accomodation', function () {
+    return view('layouts.accomodation');
+});
+
+Route::get('/gallery', function () {
+    return view('layouts.gallery');
+});
+
+Route::get('/blog', function () {
+    return view('layouts.blog');
+});
+
+Route::get('/elements', function () {
+    return view('layouts.elements');
+});
+
+
+Route::get('/contact', function () {
+    return view('layouts.contact');
+});
+
 
 Route::get('/salam', function () {
     return "<marquee><h1>Assalamu'alaikum Sobat, Semangat Belajar Laravel Framework</h1></marquee>";
