@@ -22,6 +22,10 @@ Route::get('/', function () {
     return view('layouts.home');
 });
 
+Route::get('/welcome', function () {
+    return view('welcome');
+});
+
 Route::get('/home', function () {
     return view('layouts.home');
 });
@@ -30,11 +34,11 @@ Route::get('/about', function () {
     return view('layouts.about');
 });
 
-Route::get('/accomodation', function () {
+Route::get('/services', function () {
     return view('layouts.accomodation');
 });
 
-Route::get('/gallery', function () {
+Route::get('/rooms', function () {
     return view('layouts.gallery');
 });
 
