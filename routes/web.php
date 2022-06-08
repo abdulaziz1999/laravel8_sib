@@ -69,9 +69,9 @@ Route::get('/salam', function () {
     return "<marquee><h1>Assalamu'alaikum Sobat, Semangat Belajar Laravel Framework</h1></marquee>";
 });
 
-Route::get('/mahasiswa/{nama}/{kampus}', function ($nama,$kampus) {
-    return 'Nama: '.$nama.'<br/>Kampus: '.$kampus;
-});
+// Route::get('/mahasiswa/{nama}/{kampus}', function ($nama,$kampus) {
+//     return 'Nama: '.$nama.'<br/>Kampus: '.$kampus;
+// });
 
 Route::get('/kabar', function () {
     return view('kondisi');
