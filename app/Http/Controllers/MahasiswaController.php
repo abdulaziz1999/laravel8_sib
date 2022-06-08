@@ -16,9 +16,7 @@ class MahasiswaController extends Controller
     {
         //
         $mahasiswa = Mahasiswa::latest()->paginate(5);
-
-        return view('mahasiswa.index', compact('mahasiswa'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+        return view('mahasiswa.index', compact('mahasiswa'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**
@@ -28,7 +26,8 @@ class MahasiswaController extends Controller
      */
     public function create()
     {
-        //
+        //create data mahaiswa
+        return view('mahasiswa.create');
     }
 
     /**
@@ -39,7 +38,21 @@ class MahasiswaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //create data
+        // $mahasiswa = new Mahasiswa;
+        // $mahasiswa->nama = $request->nama;
+        // $mahasiswa->nim = $request->nim;
+        // $mahasiswa->email = $request->email;
+        // $mahasiswa->alamat = $request->alamat;
+        // $mahasiswa->save();
+        $request->validate([
+            'nama' => 'required',
+            'nim' => 'required',
+            'email' => 'required',
+            'alamat' => 'required',
+        ]);
+        Mahasiswa::create($request->all());
+        return redirect('/mahasiswa')->with('success', 'Data Mahasiswa Baru Berhasil Ditambahkan');
     }
 
     /**
@@ -50,7 +63,9 @@ class MahasiswaController extends Controller
      */
     public function show(Mahasiswa $mahasiswa)
     {
-        //
+        //show by id mahasiswa
+        $mahasiswa = Mahasiswa::find($mahasiswa->id);
+        return view('mahasiswa.show', compact('mahasiswa'));
     }
 
     /**
@@ -61,7 +76,9 @@ class MahasiswaController extends Controller
      */
     public function edit(Mahasiswa $mahasiswa)
     {
-        //
+        //edit data mahasiswa in form
+        $mahasiswa = Mahasiswa::find($mahasiswa->id);
+        return view('mahasiswa.edit', compact('mahasiswa'));
     }
 
     /**
@@ -73,7 +90,21 @@ class MahasiswaController extends Controller
      */
     public function update(Request $request, Mahasiswa $mahasiswa)
     {
-        //
+        //update data
+        // $mahasiswa = Mahasiswa::find($mahasiswa->id);
+        // $mahasiswa->nama = $request->nama;
+        // $mahasiswa->nim = $request->nim;
+        // $mahasiswa->email = $request->email;
+        // $mahasiswa->alamat = $request->alamat;
+        // $mahasiswa->save();
+        $request->validate([
+            'nama' => 'required',
+            'nim' => 'required',
+            'email' => 'required',
+            'alamat' => 'required'
+        ]);
+        $mahasiswa->update($request->all());
+        return redirect('/mahasiswa')->with('success', 'Data Mahasiswa Berhasil Diubah');
     }
 
     /**
@@ -84,6 +115,8 @@ class MahasiswaController extends Controller
      */
     public function destroy(Mahasiswa $mahasiswa)
     {
-        //
+        //Delete by id mahasiswa
+        $mahasiswa->delete();
+        return redirect()->route('mahasiswa.index')->with('success', 'Data deleted successfully');
     }
 }
