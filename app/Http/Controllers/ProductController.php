@@ -14,7 +14,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        // menampilkan seluruh data
         $products = Product::latest()->paginate(5);
 
         return view('products.index', compact('products'))
@@ -28,7 +28,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        //mengarahkan ke halaman form produk
+        return view('products.create');
     }
 
     /**
@@ -39,7 +40,16 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //proses form input produk
+        $request->validate([
+            'name' => 'required',
+            'detail' => 'required',
+        ]);
+
+        Product::create($request->all());
+
+        return redirect()->route('products.index')
+            ->with('success', 'Data Produk Berhasil Disimpan.');
     }
 
     /**
@@ -50,7 +60,8 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        //menampilkan detail data produk
+        return view('products.show', compact('product'));
     }
 
     /**
@@ -61,7 +72,8 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        //mengarahkan ke form edit
+        return view('products.edit', compact('product'));
     }
 
     /**
@@ -73,7 +85,16 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        //proses form edit
+        $request->validate([
+            'name' => 'required',
+            'detail' => 'required',
+        ]);
+
+        $product->update($request->all());
+
+        return redirect()->route('products.index')
+            ->with('success', 'Data Produk Berhasil Diubah');
     }
 
     /**
@@ -84,6 +105,10 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        //menghapus data produk
+        $product->delete();
+
+        return redirect()->route('products.index')
+            ->with('success', 'Data Produk Berhasil Dihapus');
     }
 }
