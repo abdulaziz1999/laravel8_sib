@@ -35,7 +35,7 @@
                         <h4>Tambah Data Mahasiswa</h4>
                     </div>
                     <div class="card-body">
-                        <form action="{{route('mahasiswa.store')}}" method="post">
+                        <form action="{{route('mahasiswa.store')}}" method="post" autocomplete="off" >
                             @csrf
                             <div class="form-group">
                                 <label for="nama">Nama</label>

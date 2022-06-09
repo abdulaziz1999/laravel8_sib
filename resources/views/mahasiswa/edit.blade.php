@@ -37,7 +37,7 @@
                     </div>
                     <div class="card-body">
                         <!-- form edit mahasiswa -->
-                        <form action="{{route('mahasiswa.update',$mahasiswa->id)}}" method="post">
+                        <form action="{{route('mahasiswa.update',$mahasiswa->id)}}" method="post" autocomplete="off">
                             @csrf
                             @method('PUT')
                             <input type="hidden" name="id" value="{{$mahasiswa->id}}">
