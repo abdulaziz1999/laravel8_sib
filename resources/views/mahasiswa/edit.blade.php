@@ -48,7 +48,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="nim">Nim</label>
-                                <input type="text" class="form-control" id="nim" name="nim" placeholder="Masukkan Nim"
+                                <input type="number" class="form-control" id="nim" name="nim" placeholder="Masukkan Nim"
                                     value="{{$mahasiswa->nim}}">
                             </div>
                             <div class="form-group">
